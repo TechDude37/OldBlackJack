@@ -1,0 +1,291 @@
+<html>
+<body>
+<style>
+body {
+background-color:Black;
+}
+button {
+  background-color:Black ; 
+  border: dotted;
+  color:30dc19 ;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  margin: auto;
+  display: block;
+  font-size: 16px;
+}
+button:hover{
+background-color: 30dc19;
+color: Black;
+cursor: Grab;
+}
+p{
+white-space: pre;
+float: Left;
+}
+</style>
+
+<title>
+Black Jack
+</title>
+
+<h1 align = "center" style=color:#30dc19;'> Black Jack</h1>
+<h2 align = "center" id = "score" style=color:#30dc19;'></h2>
+<h3 align = "center" id = "win" style=color:#30dc19;'></h3>
+
+<script>
+// Used to check what card should be Drawn in the "Draw" function
+var Car1D = true
+var Car2D = true
+var Car3D = false
+var Car4D = false
+var Car5D = false
+var Car6D = false
+// Player Card Total
+var PValue = 0
+// Dealer Card Total
+var DValue = 0
+// ends the game
+var gameEnd = false
+//Player Cards
+let CNum1 = Math.floor((Math.random() * 13) + 1);
+let CNum2 = Math.floor((Math.random() * 13) + 1);
+let CNum3 = Math.floor((Math.random() * 13) + 1);
+let CNum4 = Math.floor((Math.random() * 13) + 1);
+let CNum5 = Math.floor((Math.random() * 13) + 1);
+// makes it so that it can convert the Player card value to the correct letters
+let CDis1 = CNum1
+let CDis2 = CNum2
+let CDis3 = CNum3
+let CDis4 = CNum4
+let CDis5 = CNum5
+// Makes the numbers display as the letters they should be and not the numbers
+if (CNum1 == 11)
+	CDis1 = "J"
+if (CNum1 == 12)
+	CDis1 = "Q"
+if (CNum1 == 13)
+	CDis1 = "K"
+if (CNum1 == 1)
+	CDis1 = "A"
+
+if (CNum2 == 11)
+	CDis2 = "J"
+if (CNum2 == 12)
+	CDis2 = "Q"
+if (CNum2 == 13)
+	CDis2 = "K"
+if (CNum2 == 1)
+	CDis2 = "A"
+
+if (CNum3 == 11)
+	CDis3 = "J"
+if (CNum3 == 12)
+	CDis3 = "Q"
+if (CNum3 == 13)
+	CDis3 = "K"
+if (CNum3 == 1)
+	CDis3 = "A"
+
+if (CNum4 == 11)
+	CDis4 = "J"
+if (CNum4 == 12)
+	CDis4  = "Q"
+if (CNum4 == 13)
+	CDis4  = "K"
+if (CNum4 == 1)
+	CDis4  = "A"
+
+if (CNum5 == 11)
+	CDis5 = "J"
+if (CNum5 == 12)
+	CDis5  = "Q"
+if (CNum5 == 13)
+	CDis5  = "K"
+if (CNum5 == 1)
+	CDis5  = "A"
+// Draws cards for player
+function Draw() {
+if (PValue > 21)
+	gameEnd = true
+	
+if (Car1D == true && gameEnd == false){
+	document.getElementById("card1").innerText = `
+  #################
+  # `+CDis1+`                           # 
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                           `+CDis1+` # 
+  #################
+  `;
+		Car1D = false
+		
+			if (CNum1 >= 2 && CNum1 <= 10)
+				PValue = PValue + CNum1
+		
+					else if (CNum1 >= 11 && CNum1 <= 13)
+						PValue = PValue + 10
+
+							else if (CNum1 == 1)
+								if (PValue >= 0 && PValue <= 10)
+									PValue = PValue + 11
+									
+									else if (PValue >= 11 && PValue <= 21)
+										PValue = PValue + 1
+  }
+
+if (Car5D == true && gameEnd == false){
+	document.getElementById("card5").innerText = `
+  #################
+  # `+CDis5+`                           # 
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                           `+CDis5+` # 
+  #################
+  `;
+			Car5D = false
+			Car6D = true
+
+				if (CNum5 >= 2 && CNum5 <= 10)
+				PValue = PValue + CNum5
+		
+					else if (CNum5 >= 11 && CNum5 <= 13)
+						PValue = PValue + 10
+
+							else if (CNum5 == 1)
+								if (PValue >= 0 && PValue <= 10)
+									PValue = PValue + 11
+									
+									else if (PValue >= 11 && PValue <= 21)
+										PValue = PValue + 1
+			
+  }
+if (Car4D == true && gameEnd == false){
+	document.getElementById("card4").innerText = `
+  #################
+  # `+CDis4+`                           # 
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                           `+CDis4+` # 
+  #################
+  `;
+			Car4D = false
+			Car5D = true
+
+				if (CNum4 >= 2 && CNum4 <= 10)
+				PValue = PValue + CNum4
+		
+					else if (CNum4 >= 11 && CNum4 <= 13)
+						PValue = PValue + 10
+
+							else if (CNum4 == 1)
+								if (PValue >= 0 && PValue <= 10)
+									PValue = PValue + 11
+									
+									else if (PValue >= 11 && PValue <= 21)
+										PValue = PValue + 1
+			
+  }
+if (Car3D == true && gameEnd == false){
+	document.getElementById("card3").innerText = `
+  #################
+  # `+CDis3+`                           # 
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                           `+CDis3+` # 
+  #################
+  `;
+			Car3D = false
+			Car4D = true
+
+				if (CNum3 >= 2 && CNum3 <= 10)
+				PValue = PValue + CNum3
+		
+					else if (CNum3 >= 11 && CNum3 <= 13)
+						PValue = PValue + 10
+
+							else if (CNum3 == 1)
+								if (PValue >= 0 && PValue <= 10)
+									PValue = PValue + 11
+									
+									else if (PValue >= 11 && PValue <= 21)
+										PValue = PValue + 1
+  }
+if (Car2D == true && gameEnd == false){
+	document.getElementById("card2").innerText = `
+  #################
+  # `+CDis2+`                           # 
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                              #
+  #                           `+CDis2+` # 
+  #################
+  `;
+		Car2D = false
+		Car3D = true
+
+			if (CNum2 >= 2 && CNum2 <= 10)
+				PValue = PValue + CNum2
+		
+					else if (CNum2 >= 11 && CNum2 <= 13)
+						PValue = PValue + 10
+
+							else if (CNum2 == 1)
+								if (PValue >= 0 && PValue <= 10)
+									PValue = PValue + 11
+									
+									else if (PValue >= 11 && PValue <= 21)
+										PValue = PValue + 1
+  }
+// makes busting possible
+if (PValue > 21)
+	document.getElementById("win").innerText= "BUST";
+	gameEnd == true
+// displays players score
+document.getElementById("score").textContent= PValue;
+}
+</script>
+
+<div>
+<button href="#" onclick = "Draw()">
+Draw
+</button>
+</div>
+
+<h2 style=color:#30dc19>Dealer:</h2>
+<p style=color:#30dc19 id = "Dcard1"></p> <p style=color:#30dc19 id = "Dcard2"></p> <p style=color:#30dc19 id = "Dcard3"></p> <p style=color:#30dc19 id = "Dcard4"></p> <p style=color:#30dc19 id = "Dcard5"></p>
+<h2 style=color:#30dc19>You:</h2>
+<p style=color:#30dc19 id = "card1"></p> <p style=color:#30dc19 id = "card2"></p> <p style=color:#30dc19 id = "card3"></p> <p style=color:#30dc19 id = "card4"></p> <p style=color:#30dc19 id = "card5"></p>
+
+</body>
+</html>
